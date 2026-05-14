@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/platforms/">
+    <Project Path="MvvmAIO.Markup.Avalonia/MvvmAIO.Markup.Avalonia.csproj" />
+    <Project Path="MvvmAIO.Markup.WPF/MvvmAIO.Markup.WPF.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="Samples.WPF/Samples.WPF.csproj" />
+  </Folder>
+  <Project Path="MvvmAIO.Markup.Shared/MvvmAIO.Markup.Shared.shproj" />
+</Solution>

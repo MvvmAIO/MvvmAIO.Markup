@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>dfd8d835-8c00-4148-845d-d1dcbfd567cc</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MvvmAIO.Markup.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)EnumExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\BooleanExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\ByteExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\CharExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\DateTimeExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\DecimalExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\DoubleExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\GuidExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\Int16Extension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\Int32Extension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\Int64Extension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\SByteExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\SingleExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\TimeSpanExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\UInt16Extension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\UInt32Extension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\UInt64Extension.cs" />
+  </ItemGroup>
+</Project>
