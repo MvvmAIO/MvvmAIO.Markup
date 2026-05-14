@@ -9,7 +9,18 @@
 		<RootNamespace>MvvmAIO.Markup</RootNamespace>
 		<DefineConstants>$(DefineConstants);WPF</DefineConstants>
 		<PolyArgumentExceptions>true</PolyArgumentExceptions>
+		<IsPackable>true</IsPackable>
+		<PackageId>MvvmAIO.Markup.WPF</PackageId>
+		<Description>Markup helpers and utilities for WPF in the MvvmAIO stack.</Description>
+		<PackageTags>wpf;mvvm;markup;MvvmAIO;XAML</PackageTags>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Polyfill" Version="10.5.1">

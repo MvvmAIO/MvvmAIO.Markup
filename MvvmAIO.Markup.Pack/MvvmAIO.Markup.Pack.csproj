@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.Build.Traversal/4.1.82">
+	<PropertyGroup>
+		<!-- Traversal 根项目不产出 NuGet 包，仅聚合对可打包项目的 Pack。 -->
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\MvvmAIO.Markup.WPF\MvvmAIO.Markup.WPF.csproj" />
+		<ProjectReference Include="..\MvvmAIO.Markup.Avalonia\MvvmAIO.Markup.Avalonia.csproj" />
+	</ItemGroup>
+</Project>

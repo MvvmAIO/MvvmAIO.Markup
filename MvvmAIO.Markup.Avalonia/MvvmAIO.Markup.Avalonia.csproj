@@ -7,7 +7,18 @@
 		<RootNamespace>MvvmAIO.Markup</RootNamespace>
 		<DefineConstants>$(DefineConstants);Avalonia</DefineConstants>
 		<LangVersion>14.0</LangVersion>
+		<IsPackable>true</IsPackable>
+		<PackageId>MvvmAIO.Markup.Avalonia</PackageId>
+		<Description>Markup helpers and utilities for Avalonia in the MvvmAIO stack.</Description>
+		<PackageTags>avalonia;mvvm;markup;MvvmAIO;XAML</PackageTags>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="12.0.3" />

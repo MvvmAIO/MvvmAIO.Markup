@@ -1,4 +1,11 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+    <File Path="LICENSE.txt" />
+  </Folder>
+  <Folder Name="/pack/">
+    <Project Path="MvvmAIO.Markup.Pack/MvvmAIO.Markup.Pack.csproj" />
+  </Folder>
   <Folder Name="/platforms/">
     <Project Path="MvvmAIO.Markup.Avalonia/MvvmAIO.Markup.Avalonia.csproj" />
     <Project Path="MvvmAIO.Markup.WPF/MvvmAIO.Markup.WPF.csproj" />
