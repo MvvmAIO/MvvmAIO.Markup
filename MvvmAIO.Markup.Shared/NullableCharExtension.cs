@@ -11,5 +11,5 @@ public sealed class NullableCharExtension : MarkupExtension
 
     public char? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

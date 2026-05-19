@@ -11,5 +11,5 @@ public sealed class NullableUInt64Extension : MarkupExtension
 
     public ulong? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

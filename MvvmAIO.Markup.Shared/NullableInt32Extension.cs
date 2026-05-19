@@ -11,5 +11,5 @@ public sealed class NullableInt32Extension : MarkupExtension
 
     public int? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

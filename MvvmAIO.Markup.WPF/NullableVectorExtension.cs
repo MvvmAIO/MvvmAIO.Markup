@@ -9,5 +9,5 @@ public sealed class NullableVectorExtension : MarkupExtension
 
     public Vector? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

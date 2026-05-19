@@ -11,5 +11,5 @@ public sealed class NullableTimeSpanExtension : MarkupExtension
 
     public System.TimeSpan? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

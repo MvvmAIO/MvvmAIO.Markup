@@ -9,5 +9,5 @@ public sealed class NullableGridLengthExtension : MarkupExtension
 
     public GridLength? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

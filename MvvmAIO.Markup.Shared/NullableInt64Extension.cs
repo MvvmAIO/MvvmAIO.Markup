@@ -11,5 +11,5 @@ public sealed class NullableInt64Extension : MarkupExtension
 
     public long? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

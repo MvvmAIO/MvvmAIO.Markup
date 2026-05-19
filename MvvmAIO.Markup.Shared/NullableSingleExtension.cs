@@ -11,5 +11,5 @@ public sealed class NullableSingleExtension : MarkupExtension
 
     public float? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

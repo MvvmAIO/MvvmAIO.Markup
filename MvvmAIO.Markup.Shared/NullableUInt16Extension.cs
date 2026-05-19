@@ -11,5 +11,5 @@ public sealed class NullableUInt16Extension : MarkupExtension
 
     public ushort? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

@@ -11,5 +11,5 @@ public sealed class NullableDateTimeExtension : MarkupExtension
 
     public System.DateTime? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

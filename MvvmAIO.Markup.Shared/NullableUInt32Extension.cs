@@ -11,5 +11,5 @@ public sealed class NullableUInt32Extension : MarkupExtension
 
     public uint? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

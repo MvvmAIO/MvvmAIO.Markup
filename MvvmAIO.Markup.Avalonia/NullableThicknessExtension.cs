@@ -8,5 +8,5 @@ public sealed class NullableThicknessExtension : MarkupExtension
 
     public Thickness? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

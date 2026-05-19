@@ -8,5 +8,5 @@ public sealed class NullableSizeExtension : MarkupExtension
 
     public Size? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

@@ -9,5 +9,5 @@ public sealed class NullablePointExtension : MarkupExtension
 
     public Point? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

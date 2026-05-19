@@ -11,5 +11,5 @@ public sealed class NullableByteExtension : MarkupExtension
 
     public byte? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }

@@ -11,5 +11,5 @@ public sealed class NullableDecimalExtension : MarkupExtension
 
     public decimal? Value { get; }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider) => Value;
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value!;
 }
