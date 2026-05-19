@@ -29,6 +29,10 @@
                         ToolTip="{x:Boolean True}" CommandParameter="{x:Boolean True}" />
                 <Button Style="{StaticResource SampleButton}" Content="False" Command="{Binding ShowMarkupValueCommand}"
                         ToolTip="{x:Boolean False}" CommandParameter="{x:Boolean False}" />
+                <Button Style="{StaticResource SampleButton}" Content="x:True" Command="{Binding ShowMarkupValueCommand}"
+                        ToolTip="{x:True}" CommandParameter="{x:True}" />
+                <Button Style="{StaticResource SampleButton}" Content="x:False" Command="{Binding ShowMarkupValueCommand}"
+                        ToolTip="{x:False}" CommandParameter="{x:False}" />
             </WrapPanel>
 
             <TextBlock Style="{StaticResource SectionTitle}" Text="整型（有符号）" />

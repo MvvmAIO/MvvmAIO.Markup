@@ -17,6 +17,7 @@
     <Compile Include="..\MvvmAIO.Markup.Shared\DateTimeExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\DecimalExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\DoubleExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\FalseExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\GuidExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\NullableBooleanExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\NullableByteExtension.cs" />
@@ -41,6 +42,7 @@
     <Compile Include="..\MvvmAIO.Markup.Shared\SingleExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\StringExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\TimeSpanExtension.cs" />
+    <Compile Include="..\MvvmAIO.Markup.Shared\TrueExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\UriExtension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\UInt16Extension.cs" />
     <Compile Include="..\MvvmAIO.Markup.Shared\UInt32Extension.cs" />

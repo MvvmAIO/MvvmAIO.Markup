@@ -33,7 +33,7 @@ The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefi
 </Window>
 ```
 
-**Shared (WPF + Avalonia):** `Boolean`, numeric primitives, `Char`, `Guid`, `DateTime`, `TimeSpan`, `String`, `Uri`, `CultureInfo`, and `Enum`.
+**Shared (WPF + Avalonia):** `Boolean`, `True`, `False`, numeric primitives, `Char`, `Guid`, `DateTime`, `TimeSpan`, `String`, `Uri`, `CultureInfo`, and `Enum`.
 
 **Nullable struct literals:** for each struct extension above, a matching `Nullable*` type exists (e.g. `NullableInt32`). Use a **parameterless** markup extension for `null` (`{x:NullableInt32}`), or pass a value (`{x:NullableInt32 42}`).
 
