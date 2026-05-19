@@ -18,7 +18,7 @@
         </Style>
     </Window.Resources>
 
-    <ScrollViewer Padding="16" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer Padding="16" VerticalScrollBarVisibility="Auto" >
         <StackPanel>
             <TextBlock Text="各按钮的 CommandParameter 使用对应 x: 标记扩展（MvvmAIO.Markup 已 XmlnsDefinition 到 winfx/2006/xaml）；点击后在消息框中显示 CLR 类型与不变区域性字符串。" TextWrapping="Wrap"
                     Opacity="0.85" />
@@ -112,6 +112,49 @@
                         Command="{Binding ShowMarkupValueCommand}"
                         ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=CommandParameter}"
                         CommandParameter="{x:Enum {x:Type TextAlignment},1}" />
+            </WrapPanel>
+
+            <TextBlock Style="{StaticResource SectionTitle}" Text="String / Uri / CultureInfo" />
+            <WrapPanel>
+                <Button Style="{StaticResource SampleButton}" Content="String"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:String Save}" />
+                <Button Style="{StaticResource SampleButton}" Content="Uri"
+                        Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{x:Uri https://github.com/MvvmAIO/MvvmAIO.Markup}" />
+                <Button Style="{StaticResource SampleButton}" Content="CultureInfo"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:CultureInfo 'zh-CN'}" />
+            </WrapPanel>
+
+            <TextBlock Style="{StaticResource SectionTitle}" Text="布局与几何（WPF）" />
+            <WrapPanel>
+                <Button Style="{StaticResource SampleButton}" Content="Thickness"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Thickness 8}" />
+                <Button Style="{StaticResource SampleButton}" Content="Point"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Point '10,20'}" />
+                <Button Style="{StaticResource SampleButton}" Content="Size"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Size '100,50'}" />
+                <Button Style="{StaticResource SampleButton}" Content="Rect"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Rect '0,0,100,50'}" />
+                <Button Style="{StaticResource SampleButton}" Content="Vector"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Vector '1,0'}" />
+                <Button Style="{StaticResource SampleButton}" Content="GridLength *"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:GridLength *}" />
+                <Button Style="{StaticResource SampleButton}" Content="CornerRadius"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:CornerRadius 4}" />
+            </WrapPanel>
+
+            <TextBlock Style="{StaticResource SectionTitle}" Text="Nullable（无参 = null）" />
+            <WrapPanel>
+                <Button Style="{StaticResource SampleButton}" Content="NullableInt32 null"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableInt32}" />
+                <Button Style="{StaticResource SampleButton}" Content="NullableInt32 42"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableInt32 42}" />
+                <Button Style="{StaticResource SampleButton}" Content="NullableBoolean True"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableBoolean True}" />
+                <Button Style="{StaticResource SampleButton}" Content="NullableThickness null"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableThickness}" />
+                <Button Style="{StaticResource SampleButton}" Content="NullablePoint"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullablePoint '5,6'}" />
             </WrapPanel>
         </StackPanel>
     </ScrollViewer>
