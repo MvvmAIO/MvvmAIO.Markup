@@ -147,18 +147,10 @@
                         Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:CornerRadius 4}" />
             </WrapPanel>
 
-            <TextBlock Style="{StaticResource SectionTitle}" Text="Nullable（无参 = null）" />
+            <TextBlock Style="{StaticResource SectionTitle}" Text="Null（内置 x:Null）" />
             <WrapPanel>
-                <Button Style="{StaticResource SampleButton}" Content="NullableInt32 null"
-                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableInt32}" />
-                <Button Style="{StaticResource SampleButton}" Content="NullableInt32 42"
-                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableInt32 42}" />
-                <Button Style="{StaticResource SampleButton}" Content="NullableBoolean True"
-                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableBoolean True}" />
-                <Button Style="{StaticResource SampleButton}" Content="NullableThickness null"
-                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullableThickness}" />
-                <Button Style="{StaticResource SampleButton}" Content="NullablePoint"
-                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:NullablePoint '5,6'}" />
+                <Button Style="{StaticResource SampleButton}" Content="x:Null"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Null}" />
             </WrapPanel>
         </StackPanel>
     </ScrollViewer>

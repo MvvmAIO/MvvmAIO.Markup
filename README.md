@@ -35,9 +35,9 @@ The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefi
 
 **Shared (WPF + Avalonia):** `Boolean`, `True`, `False`, numeric primitives, `Char`, `Guid`, `DateTime`, `TimeSpan`, `String`, `Uri`, `CultureInfo`, and `Enum`.
 
-**Nullable struct literals:** for each struct extension above, a matching `Nullable*` type exists (e.g. `NullableInt32`). Use a **parameterless** markup extension for `null` (`{x:NullableInt32}`), or pass a value (`{x:NullableInt32 42}`).
+**WPF / Avalonia (platform types):** `Thickness`, `Point`, `Size`, `Rect`, `Vector`, `GridLength`, `CornerRadius` — same `x:` syntax; implementations live in each platform assembly.
 
-**WPF / Avalonia (platform types):** `Thickness`, `Point`, `Size`, `Rect`, `Vector`, `GridLength`, `CornerRadius` — same `x:` syntax; implementations live in each platform assembly. Nullable platform variants follow the same rules (`{x:NullableThickness}`, `{x:NullablePoint '1,2'}`).
+For **null** object parameters, use the built-in `{x:Null}` (these extensions are for explicit literals only).
 
 Values that contain commas (for example `Point`, `Rect`, `pack://` URIs) must be passed as a **single quoted** constructor argument, e.g. `{x:Point '10,20'}`.
 
