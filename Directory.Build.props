@@ -1,6 +1,6 @@
 <Project>
 	<PropertyGroup>
-		<Version>0.3.0</Version>
+		<Version>0.3.1</Version>
 		<Authors>MvvmAIO, Skymly, wys0610</Authors>
 		<Company>MvvmAIO</Company>
 		<Copyright>Copyright © MvvmAIO</Copyright>

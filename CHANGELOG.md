@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+## [0.3.1] - 2026-05-28
+
+### Changed
+
+- **Avalonia:** **Samples.Avalonia** and docs now use the **`x:`** prefix only (no `xmlns:m`). Platform types use `{x:…}` markup; shared CLR literals use winfx object elements (`<x:Int32>…</x:Int32>`); `Enum`/`CultureInfo` use `x:EnumExtension` / `x:CultureInfoExtension` with `x:Arguments`.
+- Nuke **Pack** runs with build so **`.snupkg`** symbol packages are produced reliably.
+
 ## [0.3.0] - 2026-05-19
 
 ### Added

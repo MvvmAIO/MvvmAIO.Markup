@@ -21,10 +21,11 @@ dotnet add package MvvmAIO.Markup.Avalonia
 
 ## Usage (WPF / Avalonia)
 
-The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefinition`.
+The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefinition` on `xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"`.
 
-- **WPF:** use the built-in `x` prefix with the extension type name (for example `{x:Int32 42}`, `{x:True}`).
-- **Avalonia:** the `x` prefix can resolve to CLR primitives (`System.Int32`, etc.) before custom extensions. Declare `xmlns:m="using:MvvmAIO.Markup"` and use `{m:Int32 42}`, `{m:True}`, and so on. Built-in `{x:Null}` and `{x:Type …}` stay on `x`.
+### WPF
+
+Use `{x:…}` markup extensions for all supported types (for example `{x:Int32 42}`, `{x:True}`, `{x:Thickness 8}`).
 
 ```xml
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -36,26 +37,49 @@ The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefi
 </Window>
 ```
 
+### Avalonia
+
+Avalonia resolves **CLR primitive names** in the `x` namespace before custom `{x:Int32 …}` markup extensions. Use two patterns (both use the `x` prefix):
+
+| Kind | Syntax | Example |
+|------|--------|---------|
+| Built-in | `{x:True}`, `{x:False}`, `{x:Null}`, `{x:Type …}` | `CommandParameter="{x:True}"` |
+| Platform extensions (this library) | `{x:…}` markup | `CommandParameter="{x:Thickness 8}"` |
+| Shared CLR literals | **Object elements** (`<x:Int32>…</x:Int32>`, etc.) | See below |
+| `Enum` / `CultureInfo` | `x:EnumExtension` / `x:CultureInfoExtension` with `x:Arguments` | See **Samples.Avalonia** |
+
+```xml
+<Button Command="{Binding MyCommand}"
+        CommandParameter="{x:Thickness 8}" />
+<Button Command="{Binding MyCommand}">
+  <Button.CommandParameter>
+    <x:Int32>42</x:Int32>
+  </Button.CommandParameter>
+</Button>
+```
+
+Prefer Avalonia built-in `{x:True}` / `{x:False}` over `{x:Boolean …}` in attribute form.
+
 ### Markup extensions
 
 | Extension | WPF | Avalonia | Notes |
 |-----------|:---:|:--------:|-------|
-| `Boolean` | ✓ | ✓ | `{x:Boolean True}` — constructor argument required |
-| `True` | ✓ | ✓ | `{x:True}` — parameterless |
-| `False` | ✓ | ✓ | `{x:False}` — parameterless |
-| `SByte`, `Byte`, `Int16`, `UInt16`, `Int32`, `UInt32`, `Int64`, `UInt64` | ✓ | ✓ | Integer literals |
-| `Single`, `Double`, `Decimal` | ✓ | ✓ | Floating-point literals |
-| `Char` | ✓ | ✓ | Single character |
+| `Boolean` | ✓ | ✓ | WPF: `{x:Boolean True}`; Avalonia: `<x:Boolean>True</x:Boolean>` or built-in `{x:True}` |
+| `True` | ✓ | ✓ | WPF: `{x:True}`; Avalonia: prefer built-in `{x:True}` |
+| `False` | ✓ | ✓ | WPF: `{x:False}`; Avalonia: prefer built-in `{x:False}` |
+| `SByte`, `Byte`, `Int16`, `UInt16`, `Int32`, `UInt32`, `Int64`, `UInt64` | ✓ | ✓ | WPF: `{x:Int32 n}`; Avalonia: `<x:Int32>n</x:Int32>` |
+| `Single`, `Double`, `Decimal` | ✓ | ✓ | WPF: `{x:…}`; Avalonia: `<x:…>` object element |
+| `Char` | ✓ | ✓ | |
 | `Guid` | ✓ | ✓ | |
 | `DateTime`, `TimeSpan` | ✓ | ✓ | Invariant culture parsing |
 | `String` | ✓ | ✓ | |
-| `Uri` | ✓ | ✓ | Quote values with commas or special characters |
-| `CultureInfo` | ✓ | ✓ | e.g. `{x:CultureInfo 'zh-CN'}` |
-| `Enum` | ✓ | ✓ | `{x:Enum {x:Type MyEnum},member}` — case-insensitive |
-| `Thickness` | ✓ | ✓ | String constructor, e.g. `{x:Thickness 8}` |
+| `Uri` | ✓ | ✓ | Quote comma values in WPF `{x:Uri '…'}` |
+| `CultureInfo` | ✓ | ✓ | WPF: `{x:CultureInfo 'zh-CN'}`; Avalonia: `x:CultureInfoExtension` + `x:Arguments` |
+| `Enum` | ✓ | ✓ | WPF: `{x:Enum {x:Type T},member}`; Avalonia: `x:EnumExtension` + `x:Arguments` |
+| `Thickness` | ✓ | ✓ | `{x:Thickness 8}` (both platforms) |
 | `Point`, `Size`, `Rect`, `Vector` | ✓ | ✓ | Comma-separated — **quote** the value |
 | `GridLength`, `CornerRadius` | ✓ | ✓ | |
-| `Color` | ✓ | ✓ | e.g. `{x:Color '#FFFF0000'}` (WPF) or `{m:Color …}` (Avalonia) |
+| `Color` | ✓ | ✓ | `{x:Color '#FFFF0000'}` |
 | `Duration`, `KeyTime` | ✓ | | WPF animation (`System.Windows`) |
 
 ### Null and booleans
@@ -77,7 +101,7 @@ CommandParameter="{x:Point '10,20'}"
 CommandParameter="{x:Uri 'pack://application:,,,/Images/logo.png'}"
 ```
 
-See **`Samples.WPF`** (`{x:…}`) and **`Samples.Avalonia`** (`xmlns:m` + `{m:…}`) for full button matrices.
+See **`Samples.WPF`** and **`Samples.Avalonia`** for full button matrices (WPF: all `{x:…}`; Avalonia: `{x:…}` + `<x:…>` elements).
 
 ## Building & packing
 

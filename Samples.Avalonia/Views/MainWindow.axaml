@@ -1,6 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:m="using:MvvmAIO.Markup"
+        xmlns:media="using:Avalonia.Media"
         xmlns:vm="using:Samples.ViewModels"
         x:Class="Samples.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -12,120 +12,196 @@
                        TextWrapping="Wrap"
                        Opacity="0.9"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Each button passes a markup extension as CommandParameter (MvvmAIO.Markup is mapped to the default x namespace)."
+            <TextBlock Text="Avalonia: use {x:…} markup extensions for platform types and built-in x:True/x:False; use &lt;x:Int32&gt;…&lt;/x:Int32&gt; object elements for shared CLR literals (winfx primitives). MvvmAIO.Markup maps to the x namespace via XmlnsDefinition."
                        TextWrapping="Wrap"
                        Opacity="0.85" />
 
-            <TextBlock Classes="section" Text="Boolean" />
+            <TextBlock Classes="section" Text="Boolean (built-in x:True / x:False)" />
             <WrapPanel>
-                <Button Classes="sample" Content="True" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Boolean True}" />
-                <Button Classes="sample" Content="False" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Boolean False}" />
                 <Button Classes="sample" Content="x:True" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:True}" />
+                        CommandParameter="{x:True}" />
                 <Button Classes="sample" Content="x:False" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:False}" />
+                        CommandParameter="{x:False}" />
+                <Button Classes="sample" Content="x:Boolean element" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Boolean>True</x:Boolean>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
-            <TextBlock Classes="section" Text="Signed integers" />
+            <TextBlock Classes="section" Text="Signed integers (x: object elements)" />
             <WrapPanel>
-                <Button Classes="sample" Content="SByte -1" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:SByte -1}" />
-                <Button Classes="sample" Content="Int16 -1000" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Int16 -1000}" />
-                <Button Classes="sample" Content="Int32 max" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Int32 2147483647}" />
-                <Button Classes="sample" Content="Int64 max" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Int64 9223372036854775807}" />
+                <Button Classes="sample" Content="SByte -1" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:SByte>-1</x:SByte>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="Int16 -1000" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Int16>-1000</x:Int16>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="Int32 max" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Int32>2147483647</x:Int32>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="Int64 max" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Int64>9223372036854775807</x:Int64>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
             <TextBlock Classes="section" Text="Unsigned / Byte" />
             <WrapPanel>
-                <Button Classes="sample" Content="Byte 255" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Byte 255}" />
-                <Button Classes="sample" Content="UInt16 65535" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:UInt16 65535}" />
-                <Button Classes="sample" Content="UInt32" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:UInt32 4000000000}" />
-                <Button Classes="sample" Content="UInt64 max" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:UInt64 18446744073709551615}" />
+                <Button Classes="sample" Content="Byte 255" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Byte>255</x:Byte>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="UInt16 65535" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:UInt16>65535</x:UInt16>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="UInt32" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:UInt32>4000000000</x:UInt32>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="UInt64 max" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:UInt64>18446744073709551615</x:UInt64>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
             <TextBlock Classes="section" Text="Floating point &amp; Decimal" />
             <WrapPanel>
-                <Button Classes="sample" Content="Single" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Single 3.1415927}" />
-                <Button Classes="sample" Content="Double" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Double 2.718281828459045}" />
-                <Button Classes="sample" Content="Decimal" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Decimal 1234567890.123456789}" />
+                <Button Classes="sample" Content="Single" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Single>3.1415927</x:Single>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="Double" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Double>2.718281828459045</x:Double>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="Decimal" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Decimal>1234567890.123456789</x:Decimal>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
             <TextBlock Classes="section" Text="Char" />
             <WrapPanel>
-                <Button Classes="sample" Content="Char Z" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Char Z}" />
-                <Button Classes="sample" Content="Char +" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Char +}" />
+                <Button Classes="sample" Content="Char Z" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Char>Z</x:Char>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="Char +" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Char>+</x:Char>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
             <TextBlock Classes="section" Text="Date &amp; time" />
             <WrapPanel>
-                <Button Classes="sample" Content="DateTime" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:DateTime 2026-05-14}" />
-                <Button Classes="sample" Content="TimeSpan" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:TimeSpan 1.02:03:04.005}" />
+                <Button Classes="sample" Content="DateTime" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:DateTime>2026-05-14</x:DateTime>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="TimeSpan" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:TimeSpan>1.02:03:04.005</x:TimeSpan>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
             <TextBlock Classes="section" Text="Guid" />
             <WrapPanel>
-                <Button Classes="sample" Content="Guid" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Guid a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11}" />
+                <Button Classes="sample" Content="Guid" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Guid>a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11</x:Guid>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
-            <TextBlock Classes="section" Text="Enum" />
+            <TextBlock Classes="section" Text="Enum (x:EnumExtension object)" />
             <WrapPanel>
-                <Button Classes="sample" Content="TextAlignment Center"
-                        Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Enum {x:Type TextAlignment},Center}" />
-                <Button Classes="sample" Content="TextAlignment 1"
-                        Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Enum {x:Type TextAlignment},1}" />
+                <Button Classes="sample" Content="TextAlignment Center" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:EnumExtension>
+                            <x:Arguments>
+                                <x:Type TypeName="media:TextAlignment" />
+                                <x:String>Center</x:String>
+                            </x:Arguments>
+                        </x:EnumExtension>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="TextAlignment 1" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:EnumExtension>
+                            <x:Arguments>
+                                <x:Type TypeName="media:TextAlignment" />
+                                <x:String>1</x:String>
+                            </x:Arguments>
+                        </x:EnumExtension>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
             <TextBlock Classes="section" Text="String / Uri / CultureInfo" />
             <WrapPanel>
-                <Button Classes="sample" Content="String" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:String Save}" />
-                <Button Classes="sample" Content="Uri" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Uri https://github.com/MvvmAIO/MvvmAIO.Markup}" />
-                <Button Classes="sample" Content="CultureInfo" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:CultureInfo 'zh-CN'}" />
+                <Button Classes="sample" Content="String" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:String>Save</x:String>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="Uri" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:Uri>https://github.com/MvvmAIO/MvvmAIO.Markup</x:Uri>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Classes="sample" Content="CultureInfo" Command="{Binding ShowMarkupValueCommand}">
+                    <Button.CommandParameter>
+                        <x:CultureInfoExtension>
+                            <x:Arguments>
+                                <x:String>zh-CN</x:String>
+                            </x:Arguments>
+                        </x:CultureInfoExtension>
+                    </Button.CommandParameter>
+                </Button>
             </WrapPanel>
 
-            <TextBlock Classes="section" Text="Layout &amp; geometry (Avalonia)" />
+            <TextBlock Classes="section" Text="Layout &amp; geometry ({x:…} markup)" />
             <WrapPanel>
                 <Button Classes="sample" Content="Thickness" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Thickness 8}" />
+                        CommandParameter="{x:Thickness 8}" />
                 <Button Classes="sample" Content="Point" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Point '10,20'}" />
+                        CommandParameter="{x:Point '10,20'}" />
                 <Button Classes="sample" Content="Size" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Size '100,50'}" />
+                        CommandParameter="{x:Size '100,50'}" />
                 <Button Classes="sample" Content="Rect" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Rect '0,0,100,50'}" />
+                        CommandParameter="{x:Rect '0,0,100,50'}" />
                 <Button Classes="sample" Content="Vector" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Vector '1,0'}" />
+                        CommandParameter="{x:Vector '1,0'}" />
                 <Button Classes="sample" Content="GridLength *" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:GridLength *}" />
+                        CommandParameter="{x:GridLength *}" />
                 <Button Classes="sample" Content="CornerRadius" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:CornerRadius 4}" />
+                        CommandParameter="{x:CornerRadius 4}" />
             </WrapPanel>
 
-            <TextBlock Classes="section" Text="Color (Avalonia)" />
+            <TextBlock Classes="section" Text="Color ({x:Color …})" />
             <WrapPanel>
                 <Button Classes="sample" Content="Color" Command="{Binding ShowMarkupValueCommand}"
-                        CommandParameter="{m:Color '#FFFF0000'}" />
+                        CommandParameter="{x:Color '#FFFF0000'}" />
             </WrapPanel>
 
             <TextBlock Classes="section" Text="Null (built-in x:Null)" />

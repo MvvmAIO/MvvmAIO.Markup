@@ -5,7 +5,7 @@ Use this block in [MvvmAIO/MvvmAIO](https://github.com/MvvmAIO/MvvmAIO) `README.
 ```markdown
 ### XAML literals (`MvvmAIO.Markup`)
 
-Install **[MvvmAIO.Markup.WPF](https://www.nuget.org/packages/MvvmAIO.Markup.WPF)** or **[MvvmAIO.Markup.Avalonia](https://www.nuget.org/packages/MvvmAIO.Markup.Avalonia)** for strongly typed `{x:Int32 42}`, `{x:True}`, `{x:Thickness 8}`, and related markup extensions on the default `x` namespace (WPF) or `xmlns:m="using:MvvmAIO.Markup"` (Avalonia).
+Install **[MvvmAIO.Markup.WPF](https://www.nuget.org/packages/MvvmAIO.Markup.WPF)** or **[MvvmAIO.Markup.Avalonia](https://www.nuget.org/packages/MvvmAIO.Markup.Avalonia)** for strongly typed XAML literals on the `x` namespace. **WPF** uses `{x:Int32 42}`, `{x:True}`, `{x:Thickness 8}`, and similar markup extensions. **Avalonia** uses the same `x` prefix: `{x:…}` for platform types and built-in booleans; `<x:Int32>42</x:Int32>` object elements for shared CLR types (see package README).
 
 Repository: <https://github.com/MvvmAIO/MvvmAIO.Markup>
 ```

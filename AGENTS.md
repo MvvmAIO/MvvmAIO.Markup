@@ -63,7 +63,7 @@ Package version: **[`Directory.Build.props`](Directory.Build.props)** `Version` 
 | `MvvmAIO.Markup.Avalonia/` | Avalonia-only extensions + `MarkupValueParser`; imports Shared with `Avalonia` constant |
 | `MvvmAIO.Markup.Pack/` | [Microsoft.Build.Traversal](https://www.nuget.org/packages/Microsoft.Build.Traversal) — aggregates pack of both libraries |
 | `Samples.WPF/` | Interactive WPF demo (not packed) |
-| `Samples.Avalonia/` | Interactive Avalonia demo (`xmlns:m` prefix; not packed) |
+| `Samples.Avalonia/` | Interactive Avalonia demo (`x:` markup + object elements; not packed) |
 | `MvvmAIO.Markup.Tests.WPF/` / `.Tests.Avalonia/` | xUnit — `ProvideValue` and parsing |
 | `build/` | Nuke — `build/_build.csproj`, [`.nuke/`](.nuke/) parameters schema |
 | `.github/workflows/` | `dotnet.yml` (CI on `master`), `nuget-publish.yml` (tags `v*`) |
@@ -169,7 +169,7 @@ Publish actors (workflow `if:`): **`MvvmAIO`**, **`Skymly`**, **`wys0610`**.
 - **WPF** forces **`windows-latest`** runners; do not switch CI to `ubuntu-latest` without dropping WPF from the solution graph.
 - Pack output: `MvvmAIO.Markup.WPF/bin/Release/*.nupkg` and `MvvmAIO.Markup.Avalonia/bin/Release/*.nupkg`.
 - Root **README.md** is packed into both NuGet packages (`PackageReadmeFile`).
-- **Avalonia XAML:** prefer `xmlns:m="using:MvvmAIO.Markup"` — the `x` prefix can resolve to CLR primitives before custom extensions.
+- **Avalonia XAML:** do **not** use `{x:Int32 …}` brace form for shared CLR types (resolves to `System.Int32` before `Int32Extension`). Use winfx **object elements** (`<x:Int32>42</x:Int32>`) or `{x:…}` for platform types; built-in `{x:True}` / `{x:False}` for bools. See **Samples.Avalonia**.
 
 ---
 
@@ -180,7 +180,7 @@ Publish actors (workflow `if:`): **`MvvmAIO`**, **`Skymly`**, **`wys0610`**.
 | **[README.md](README.md)** | Install, syntax, extension list, quoting rules |
 | **This file** | Agent/contributor constraints, layout, CI, conventions |
 | **[Samples.WPF/Views/MainWindow.xaml](Samples.WPF/Views/MainWindow.xaml)** | WPF living examples (`{x:…}`) |
-| **[Samples.Avalonia/Views/MainWindow.axaml](Samples.Avalonia/Views/MainWindow.axaml)** | Avalonia living examples (`{m:…}`) |
+| **[Samples.Avalonia/Views/MainWindow.axaml](Samples.Avalonia/Views/MainWindow.axaml)** | Avalonia living examples (`{x:…}` + `<x:…>` elements) |
 | **[docs/ecosystem-link.md](docs/ecosystem-link.md)** | Snippet for MvvmAIO main repo README |
 
 ---
