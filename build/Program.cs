@@ -89,7 +89,6 @@ sealed class Build : NukeBuild
                 s = s
                     .SetProject(PackProject)
                     .SetConfiguration(Configuration)
-                    .EnableNoBuild()
                     .SetProperty("ContinuousIntegrationBuild", "true");
 
                 if (!string.IsNullOrWhiteSpace(Version))
