@@ -4,6 +4,19 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+## [0.3.0] - 2026-05-19
+
+### Added
+
+- **`ColorExtension`** (WPF + Avalonia), **`DurationExtension`** and **`KeyTimeExtension`** (WPF animation types).
+- **Source Link** and **`.snupkg`** symbol packages for published libraries.
+- **`Directory.Packages.props`** — central package version management.
+- **`docs/ecosystem-link.md`** — suggested README snippet for the [MvvmAIO](https://github.com/MvvmAIO/MvvmAIO) main repository.
+
+### Changed
+
+- GitHub Actions: `checkout@v6`, `setup-dotnet@v5`, `cache@v5`, `upload-artifact@v7`; CI uploads test TRX artifacts.
+
 ## [0.2.0] - 2026-05-19
 
 ### Added

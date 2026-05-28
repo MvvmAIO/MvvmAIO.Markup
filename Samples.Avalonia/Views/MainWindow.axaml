@@ -122,6 +122,12 @@
                         CommandParameter="{m:CornerRadius 4}" />
             </WrapPanel>
 
+            <TextBlock Classes="section" Text="Color (Avalonia)" />
+            <WrapPanel>
+                <Button Classes="sample" Content="Color" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Color '#FFFF0000'}" />
+            </WrapPanel>
+
             <TextBlock Classes="section" Text="Null (built-in x:Null)" />
             <WrapPanel>
                 <Button Classes="sample" Content="x:Null" Command="{Binding ShowMarkupValueCommand}"

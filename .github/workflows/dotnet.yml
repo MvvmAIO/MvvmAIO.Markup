@@ -24,24 +24,24 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup .NET 8 SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 8.0.x
 
       - name: Setup .NET 10 SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
           dotnet-quality: "preview"
 
       - name: Cache NuGet packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/Directory.Build.props', '**/global.json') }}
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/Directory.Build.props', '**/Directory.Packages.props', '**/global.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
 
@@ -51,9 +51,16 @@ jobs:
           $ErrorActionPreference = 'Stop'
           dotnet run --project "build/_build.csproj" -- --target Ci --configuration Release 2>&1 | Tee-Object -FilePath ci.log
 
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-results
+          path: ./TestResults/**/*.trx
+
       - name: Upload CI log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ci-log
           path: ./ci.log
@@ -73,5 +80,6 @@ jobs:
 
           ### Artifacts
 
+          - ``test-results`` (TRX)
           - ``ci-log`` (Nuke / CLI output)
           "@ | Add-Content -Path $env:GITHUB_STEP_SUMMARY -Encoding utf8

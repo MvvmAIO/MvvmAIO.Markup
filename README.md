@@ -55,6 +55,8 @@ The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefi
 | `Thickness` | ✓ | ✓ | String constructor, e.g. `{x:Thickness 8}` |
 | `Point`, `Size`, `Rect`, `Vector` | ✓ | ✓ | Comma-separated — **quote** the value |
 | `GridLength`, `CornerRadius` | ✓ | ✓ | |
+| `Color` | ✓ | ✓ | e.g. `{x:Color '#FFFF0000'}` (WPF) or `{m:Color …}` (Avalonia) |
+| `Duration`, `KeyTime` | ✓ | | WPF animation (`System.Windows`) |
 
 ### Null and booleans
 

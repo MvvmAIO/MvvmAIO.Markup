@@ -21,10 +21,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="12.0.3" />
+		<PackageReference Include="Avalonia" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Polyfill" Version="10.5.1">
+		<PackageReference Include="Polyfill">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

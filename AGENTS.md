@@ -15,7 +15,7 @@ For **consumer-facing** installation and XAML syntax, **[README.md](README.md)**
 | **MvvmAIO.Markup.WPF** | WPF (`UseWPF`); `net461`–`net10.0-windows` |
 | **MvvmAIO.Markup.Avalonia** | Avalonia 12; `net8.0` / `net10.0` |
 
-There are **no** source generators, runtime services, or databases. Validation is **`dotnet build`**, **`Samples.WPF`**, and the Nuke **Ci** target.
+There are **no** source generators, runtime services, or databases. Validation is **`dotnet build`**, **`dotnet test`**, **`Samples.WPF`** / **`Samples.Avalonia`**, and the Nuke **Ci** target.
 
 **Related repositories** (separate clones):
 
@@ -48,7 +48,7 @@ There are **no** source generators, runtime services, or databases. Validation i
 | Pack (both packages) | `dotnet pack MvvmAIO.Markup.Pack/MvvmAIO.Markup.Pack.csproj -c Release` |
 | Publish NuGet | Tag `v<VER>` or workflow **Publish NuGet** (maintainer actors + `NUGET_API_KEY`) |
 
-Nuke **Ci** = `Clean` → `Restore` → `Compile` (`TreatWarningsAsErrors=true`) → `Pack` (Traversal project packs WPF + Avalonia). There is **no** `Test` target yet.
+Nuke **Ci** = `Clean` → `Restore` → `Compile` (`TreatWarningsAsErrors=true`) → `Test` → `Pack` (Traversal project packs WPF + Avalonia; symbol packages `.snupkg` when `IncludeSymbols` is set).
 
 Package version: **[`Directory.Build.props`](Directory.Build.props)** `Version` (overridden on publish via `--version` / tag).
 
@@ -62,7 +62,9 @@ Package version: **[`Directory.Build.props`](Directory.Build.props)** `Version` 
 | `MvvmAIO.Markup.WPF/` | WPF-only extensions + `MarkupValueParser`; imports Shared with `WPF` constant |
 | `MvvmAIO.Markup.Avalonia/` | Avalonia-only extensions + `MarkupValueParser`; imports Shared with `Avalonia` constant |
 | `MvvmAIO.Markup.Pack/` | [Microsoft.Build.Traversal](https://www.nuget.org/packages/Microsoft.Build.Traversal) — aggregates pack of both libraries |
-| `Samples.WPF/` | Interactive demo (not packed) |
+| `Samples.WPF/` | Interactive WPF demo (not packed) |
+| `Samples.Avalonia/` | Interactive Avalonia demo (`xmlns:m` prefix; not packed) |
+| `MvvmAIO.Markup.Tests.WPF/` / `.Tests.Avalonia/` | xUnit — `ProvideValue` and parsing |
 | `build/` | Nuke — `build/_build.csproj`, [`.nuke/`](.nuke/) parameters schema |
 | `.github/workflows/` | `dotnet.yml` (CI on `master`), `nuget-publish.yml` (tags `v*`) |
 
@@ -108,9 +110,11 @@ When adding a **shared** type, edit **`MvvmAIO.Markup.Shared.projitems`** and ad
 
 **Shared (WPF + Avalonia):** `Boolean`, `True`, `False`, `SByte`, `Byte`, `Int16`, `UInt16`, `Int32`, `UInt32`, `Int64`, `UInt64`, `Single`, `Double`, `Decimal`, `Char`, `Guid`, `DateTime`, `TimeSpan`, `String`, `Uri`, `CultureInfo`, `Enum`.
 
-**Per platform (WPF + Avalonia each):** `Thickness`, `Point`, `Size`, `Rect`, `Vector`, `GridLength`, `CornerRadius`.
+**Per platform (WPF + Avalonia each):** `Thickness`, `Point`, `Size`, `Rect`, `Vector`, `GridLength`, `CornerRadius`, `Color`.
 
-When adding types (e.g. `Color`, `Duration`), decide **Shared** vs **platform project** by whether the CLR type is portable.
+**WPF only:** `Duration`, `KeyTime` (animation).
+
+When adding types, decide **Shared** vs **platform project** by whether the CLR type is portable.
 
 ---
 
@@ -149,12 +153,12 @@ Publish actors (workflow `if:`): **`MvvmAIO`**, **`Skymly`**, **`wys0610`**.
 - **Minimal scope** — one logical concern per change; no drive-by refactors.
 - New extensions: add **Samples.WPF** buttons when behavior is non-obvious; update **README.md** extension list.
 - **User-visible** releases: bump **`Directory.Build.props`** `Version`; tag **`v*`** for NuGet publish.
-- **Tests:** none today; when a test project is added, wire it into Nuke **Ci** — prefer testing `ProvideValue` and parsing edge cases.
+- **Tests:** extend `MvvmAIO.Markup.Tests.*` when adding extensions; Nuke **Ci** runs `dotnet test` before pack.
 
 ### 5. Dependencies
 
-- **`Polyfill`** (PrivateAssets) on WPF/Avalonia projects — keep versions aligned across projects.
-- **Avalonia** package version is declared in `MvvmAIO.Markup.Avalonia.csproj` only.
+- Package versions: **[`Directory.Packages.props`](Directory.Packages.props)** (central management).
+- **`Polyfill`** (PrivateAssets) on WPF/Avalonia projects.
 - Do not add heavy dependencies; this library should stay small and trim-friendly.
 
 ---
@@ -165,20 +169,7 @@ Publish actors (workflow `if:`): **`MvvmAIO`**, **`Skymly`**, **`wys0610`**.
 - **WPF** forces **`windows-latest`** runners; do not switch CI to `ubuntu-latest` without dropping WPF from the solution graph.
 - Pack output: `MvvmAIO.Markup.WPF/bin/Release/*.nupkg` and `MvvmAIO.Markup.Avalonia/bin/Release/*.nupkg`.
 - Root **README.md** is packed into both NuGet packages (`PackageReadmeFile`).
-- **`LICENSE.txt`** still contains placeholder copyright text — fix before a formal legal audit.
-
----
-
-## Suggested follow-ups (not blockers for routine PRs)
-
-| Area | Notes |
-|------|--------|
-| Unit tests | `ProvideValue` + `MarkupValueParser` + enum parsing |
-| `Samples.Avalonia` | Parity with WPF sample matrix |
-| `CHANGELOG.md` | Release notes for 0.1.x |
-| `CONTRIBUTING.md` | Short pointer to this file |
-| `.cursor/rules/` | Thin rules that link to **AGENTS.md** only (Prism pattern) |
-| Medium-priority extensions | `Color`, `Duration` — platform-specific if added |
+- **Avalonia XAML:** prefer `xmlns:m="using:MvvmAIO.Markup"` — the `x` prefix can resolve to CLR primitives before custom extensions.
 
 ---
 
@@ -188,7 +179,9 @@ Publish actors (workflow `if:`): **`MvvmAIO`**, **`Skymly`**, **`wys0610`**.
 |---------|---------|
 | **[README.md](README.md)** | Install, syntax, extension list, quoting rules |
 | **This file** | Agent/contributor constraints, layout, CI, conventions |
-| **[Samples.WPF/Views/MainWindow.xaml](Samples.WPF/Views/MainWindow.xaml)** | Living examples for most extensions |
+| **[Samples.WPF/Views/MainWindow.xaml](Samples.WPF/Views/MainWindow.xaml)** | WPF living examples (`{x:…}`) |
+| **[Samples.Avalonia/Views/MainWindow.axaml](Samples.Avalonia/Views/MainWindow.axaml)** | Avalonia living examples (`{m:…}`) |
+| **[docs/ecosystem-link.md](docs/ecosystem-link.md)** | Snippet for MvvmAIO main repo README |
 
 ---
 

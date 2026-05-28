@@ -22,15 +22,15 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup .NET 8 SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 8.0.x
 
       - name: Setup .NET 10 SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.0.x
           dotnet-quality: "preview"
@@ -58,7 +58,7 @@ jobs:
 
       - name: Upload publish log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nuget-publish-log
           path: ./publish.log
@@ -66,12 +66,14 @@ jobs:
 
       - name: Upload package artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nuget-packages
           path: |
             MvvmAIO.Markup.WPF/bin/Release/*.nupkg
             MvvmAIO.Markup.Avalonia/bin/Release/*.nupkg
+            MvvmAIO.Markup.WPF/bin/Release/*.snupkg
+            MvvmAIO.Markup.Avalonia/bin/Release/*.snupkg
           if-no-files-found: warn
 
       - name: Write publish summary
@@ -89,5 +91,5 @@ jobs:
             echo ""
             echo "### Artifacts"
             echo "- \`nuget-publish-log\`"
-            echo "- \`nuget-packages\` (.nupkg files, if any)"
+            echo "- \`nuget-packages\` (.nupkg / .snupkg files, if any)"
           } >> "$GITHUB_STEP_SUMMARY"

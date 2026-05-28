@@ -147,6 +147,16 @@
                         Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:CornerRadius 4}" />
             </WrapPanel>
 
+            <TextBlock Style="{StaticResource SectionTitle}" Text="Color / Duration / KeyTime（WPF）" />
+            <WrapPanel>
+                <Button Style="{StaticResource SampleButton}" Content="Color"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Color '#FFFF0000'}" />
+                <Button Style="{StaticResource SampleButton}" Content="Duration"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:Duration 0:0:5}" />
+                <Button Style="{StaticResource SampleButton}" Content="KeyTime"
+                        Command="{Binding ShowMarkupValueCommand}" CommandParameter="{x:KeyTime 0:0:2}" />
+            </WrapPanel>
+
             <TextBlock Style="{StaticResource SectionTitle}" Text="Null（内置 x:Null）" />
             <WrapPanel>
                 <Button Style="{StaticResource SampleButton}" Content="x:Null"

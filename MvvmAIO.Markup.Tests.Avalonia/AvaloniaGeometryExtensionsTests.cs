@@ -29,4 +29,8 @@ public sealed class AvaloniaGeometryExtensionsTests
     [Fact]
     public void CornerRadiusExtension_Uniform() =>
         Assert.Equal(new CornerRadius(4), (CornerRadius)MarkupExtensionTestHelper.ProvideValue(new CornerRadiusExtension("4")));
+
+    [Fact]
+    public void ColorExtension_ParseHex() =>
+        Assert.Equal(Colors.Red, (Color)MarkupExtensionTestHelper.ProvideValue(new ColorExtension("#FFFF0000")));
 }
