@@ -1,0 +1,145 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="using:MvvmAIO.Markup"
+        xmlns:vm="using:Samples.ViewModels"
+        x:Class="Samples.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="MvvmAIO.Markup — Samples (Avalonia)"
+        Width="720" Height="820" MinWidth="520">
+    <ScrollViewer Padding="16" VerticalScrollBarVisibility="Auto">
+        <StackPanel Spacing="4">
+            <TextBlock Text="{Binding LastMarkupValue}"
+                       TextWrapping="Wrap"
+                       Opacity="0.9"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Each button passes a markup extension as CommandParameter (MvvmAIO.Markup is mapped to the default x namespace)."
+                       TextWrapping="Wrap"
+                       Opacity="0.85" />
+
+            <TextBlock Classes="section" Text="Boolean" />
+            <WrapPanel>
+                <Button Classes="sample" Content="True" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Boolean True}" />
+                <Button Classes="sample" Content="False" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Boolean False}" />
+                <Button Classes="sample" Content="x:True" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:True}" />
+                <Button Classes="sample" Content="x:False" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:False}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Signed integers" />
+            <WrapPanel>
+                <Button Classes="sample" Content="SByte -1" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:SByte -1}" />
+                <Button Classes="sample" Content="Int16 -1000" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Int16 -1000}" />
+                <Button Classes="sample" Content="Int32 max" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Int32 2147483647}" />
+                <Button Classes="sample" Content="Int64 max" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Int64 9223372036854775807}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Unsigned / Byte" />
+            <WrapPanel>
+                <Button Classes="sample" Content="Byte 255" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Byte 255}" />
+                <Button Classes="sample" Content="UInt16 65535" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:UInt16 65535}" />
+                <Button Classes="sample" Content="UInt32" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:UInt32 4000000000}" />
+                <Button Classes="sample" Content="UInt64 max" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:UInt64 18446744073709551615}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Floating point &amp; Decimal" />
+            <WrapPanel>
+                <Button Classes="sample" Content="Single" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Single 3.1415927}" />
+                <Button Classes="sample" Content="Double" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Double 2.718281828459045}" />
+                <Button Classes="sample" Content="Decimal" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Decimal 1234567890.123456789}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Char" />
+            <WrapPanel>
+                <Button Classes="sample" Content="Char Z" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Char Z}" />
+                <Button Classes="sample" Content="Char +" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Char +}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Date &amp; time" />
+            <WrapPanel>
+                <Button Classes="sample" Content="DateTime" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:DateTime 2026-05-14}" />
+                <Button Classes="sample" Content="TimeSpan" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:TimeSpan 1.02:03:04.005}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Guid" />
+            <WrapPanel>
+                <Button Classes="sample" Content="Guid" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Guid a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Enum" />
+            <WrapPanel>
+                <Button Classes="sample" Content="TextAlignment Center"
+                        Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Enum {x:Type TextAlignment},Center}" />
+                <Button Classes="sample" Content="TextAlignment 1"
+                        Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Enum {x:Type TextAlignment},1}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="String / Uri / CultureInfo" />
+            <WrapPanel>
+                <Button Classes="sample" Content="String" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:String Save}" />
+                <Button Classes="sample" Content="Uri" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Uri https://github.com/MvvmAIO/MvvmAIO.Markup}" />
+                <Button Classes="sample" Content="CultureInfo" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:CultureInfo 'zh-CN'}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Layout &amp; geometry (Avalonia)" />
+            <WrapPanel>
+                <Button Classes="sample" Content="Thickness" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Thickness 8}" />
+                <Button Classes="sample" Content="Point" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Point '10,20'}" />
+                <Button Classes="sample" Content="Size" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Size '100,50'}" />
+                <Button Classes="sample" Content="Rect" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Rect '0,0,100,50'}" />
+                <Button Classes="sample" Content="Vector" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:Vector '1,0'}" />
+                <Button Classes="sample" Content="GridLength *" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:GridLength *}" />
+                <Button Classes="sample" Content="CornerRadius" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{m:CornerRadius 4}" />
+            </WrapPanel>
+
+            <TextBlock Classes="section" Text="Null (built-in x:Null)" />
+            <WrapPanel>
+                <Button Classes="sample" Content="x:Null" Command="{Binding ShowMarkupValueCommand}"
+                        CommandParameter="{x:Null}" />
+            </WrapPanel>
+        </StackPanel>
+    </ScrollViewer>
+
+    <Window.Styles>
+        <Style Selector="TextBlock.section">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,16,0,6" />
+        </Style>
+        <Style Selector="Button.sample">
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="MinWidth" Value="112" />
+            <Setter Property="Padding" Value="8,4" />
+        </Style>
+    </Window.Styles>
+</Window>

@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace MvvmAIO.Markup;
 
-namespace MvvmAIO.Markup;
-
-public class EnumExtension : MarkupExtension
+#if WPF
+[System.Windows.Markup.MarkupExtensionReturnType(typeof(Enum))]
+#endif
+public sealed class EnumExtension : MarkupExtension
 {
     public EnumExtension(Type type, string str)
     {
-        ArgumentNullException.ThrowIfNull(type, nameof(type));
-        ArgumentNullException.ThrowIfNull(str, nameof(str));
-        Value= Enum.Parse(type, str, true);
+        ArgumentNullException.ThrowIfNull(type);
+        ArgumentNullException.ThrowIfNull(str);
+        Value = Enum.Parse(type, str, ignoreCase: true);
     }
-    private object Value { get; }
 
-    public override object ProvideValue(IServiceProvider serviceProvider)
-    {
-        return Value;
-    }
+    public object Value { get; }
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => Value;
 }

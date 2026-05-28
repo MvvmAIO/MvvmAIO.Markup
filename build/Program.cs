@@ -68,8 +68,20 @@ sealed class Build : NukeBuild
                 .SetProperty("TreatWarningsAsErrors", "true"));
         });
 
-    Target Pack => _ => _
+    Target Test => _ => _
         .DependsOn(Compile)
+        .Executes(() =>
+        {
+            DotNetTest(s => s
+                .SetProjectFile(SolutionFile)
+                .SetConfiguration(Configuration)
+                .EnableNoBuild()
+                .SetResultsDirectory(TestResultsDirectory)
+                .SetLoggers("trx;LogFileName=test-results.trx"));
+        });
+
+    Target Pack => _ => _
+        .DependsOn(Test)
         .Executes(() =>
         {
             DotNetPack(s =>

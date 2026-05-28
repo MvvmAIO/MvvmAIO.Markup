@@ -29,7 +29,8 @@
         "Compile",
         "Pack",
         "Publish",
-        "Restore"
+        "Restore",
+        "Test"
       ]
     },
     "Verbosity": {

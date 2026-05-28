@@ -21,7 +21,10 @@ dotnet add package MvvmAIO.Markup.Avalonia
 
 ## Usage (WPF / Avalonia)
 
-The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefinition`, so you can use the built-in `x` prefix with the **type name** of the extension (for example `x:Int32`, `x:Boolean`, `x:Guid`).
+The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefinition`.
+
+- **WPF:** use the built-in `x` prefix with the extension type name (for example `{x:Int32 42}`, `{x:True}`).
+- **Avalonia:** the `x` prefix can resolve to CLR primitives (`System.Int32`, etc.) before custom extensions. Declare `xmlns:m="using:MvvmAIO.Markup"` and use `{m:Int32 42}`, `{m:True}`, and so on. Built-in `{x:Null}` and `{x:Type …}` stay on `x`.
 
 ```xml
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -33,21 +36,56 @@ The library maps `MvvmAIO.Markup` into the default XAML namespace via `XmlnsDefi
 </Window>
 ```
 
-**Shared (WPF + Avalonia):** `Boolean`, `True`, `False`, numeric primitives, `Char`, `Guid`, `DateTime`, `TimeSpan`, `String`, `Uri`, `CultureInfo`, and `Enum`.
+### Markup extensions
 
-**WPF / Avalonia (platform types):** `Thickness`, `Point`, `Size`, `Rect`, `Vector`, `GridLength`, `CornerRadius` — same `x:` syntax; implementations live in each platform assembly.
+| Extension | WPF | Avalonia | Notes |
+|-----------|:---:|:--------:|-------|
+| `Boolean` | ✓ | ✓ | `{x:Boolean True}` — constructor argument required |
+| `True` | ✓ | ✓ | `{x:True}` — parameterless |
+| `False` | ✓ | ✓ | `{x:False}` — parameterless |
+| `SByte`, `Byte`, `Int16`, `UInt16`, `Int32`, `UInt32`, `Int64`, `UInt64` | ✓ | ✓ | Integer literals |
+| `Single`, `Double`, `Decimal` | ✓ | ✓ | Floating-point literals |
+| `Char` | ✓ | ✓ | Single character |
+| `Guid` | ✓ | ✓ | |
+| `DateTime`, `TimeSpan` | ✓ | ✓ | Invariant culture parsing |
+| `String` | ✓ | ✓ | |
+| `Uri` | ✓ | ✓ | Quote values with commas or special characters |
+| `CultureInfo` | ✓ | ✓ | e.g. `{x:CultureInfo 'zh-CN'}` |
+| `Enum` | ✓ | ✓ | `{x:Enum {x:Type MyEnum},member}` — case-insensitive |
+| `Thickness` | ✓ | ✓ | String constructor, e.g. `{x:Thickness 8}` |
+| `Point`, `Size`, `Rect`, `Vector` | ✓ | ✓ | Comma-separated — **quote** the value |
+| `GridLength`, `CornerRadius` | ✓ | ✓ | |
 
-For **null** object parameters, use the built-in `{x:Null}` (these extensions are for explicit literals only).
+### Null and booleans
 
-Values that contain commas (for example `Point`, `Rect`, `pack://` URIs) must be passed as a **single quoted** constructor argument, e.g. `{x:Point '10,20'}`.
+| Syntax | When to use |
+|--------|-------------|
+| `{x:Null}` | **Null** reference for `CommandParameter`, attached properties, etc. (built-in XAML; not provided by this library). |
+| `{x:True}` / `{x:False}` | Shorthand **bool** literals without a constructor argument. |
+| `{x:Boolean True}` | Same CLR value as `{x:True}`, when you need the explicit `Boolean` extension form. |
 
-See **`Samples.WPF`** in this repository for more examples.
+This library does **not** ship `Nullable*Extension` types — use `{x:Null}` for null.
+
+### Quoted constructor arguments
+
+Values that contain **commas** (or other characters that break XAML tokenization) must be a **single quoted** argument:
+
+```xml
+CommandParameter="{x:Point '10,20'}"
+CommandParameter="{x:Uri 'pack://application:,,,/Images/logo.png'}"
+```
+
+See **`Samples.WPF`** (`{x:…}`) and **`Samples.Avalonia`** (`xmlns:m` + `{m:…}`) for full button matrices.
 
 ## Building & packing
 
 - **Solution:** `MvvmAIO.Markup.slnx`
 - **Pack both NuGet packages:** `dotnet pack MvvmAIO.Markup.Pack/MvvmAIO.Markup.Pack.csproj -c Release`
 - **Nuke (CI parity):** `dotnet run --project build/_build.csproj -- --target Ci --configuration Release`
+
+## Contributing
+
+Automated agents and contributors: see **[AGENTS.md](AGENTS.md)** ([中文摘要](AGENTS.zh-CN.md)), **[CONTRIBUTING.md](CONTRIBUTING.md)**, and **[CHANGELOG.md](CHANGELOG.md)**.
 
 ## Repository
 

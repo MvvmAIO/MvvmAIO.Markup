@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Local scratch (see AGENTS.md)
+.Temp/
+
 # User-specific files
 *.rsuser
 *.suo
