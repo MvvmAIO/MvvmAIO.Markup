@@ -4,6 +4,8 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+## [0.3.2] - 2026-06-02
+
 ### Added
 
 - **Tests:** `SharedExtensionsTests` for Avalonia (parity with WPF); additional shared literal coverage (`Guid`, `DateTime`, `TimeSpan`, `Decimal`) on both platforms.
