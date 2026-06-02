@@ -11,7 +11,7 @@
 		<PolyArgumentExceptions>true</PolyArgumentExceptions>
 		<IsPackable>true</IsPackable>
 		<PackageId>MvvmAIO.Markup.WPF</PackageId>
-		<Description>Markup helpers and utilities for WPF in the MvvmAIO stack.</Description>
+		<Description>XAML markup extensions for strongly typed literals in WPF.</Description>
 		<PackageTags>wpf;mvvm;markup;MvvmAIO;XAML</PackageTags>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>

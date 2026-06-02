@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Windows;
 
 namespace MvvmAIO.Markup.Tests;
 

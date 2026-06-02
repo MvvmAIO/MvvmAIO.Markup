@@ -17,11 +17,10 @@ For **consumer-facing** installation and XAML syntax, **[README.md](README.md)**
 
 There are **no** source generators, runtime services, or databases. Validation is **`dotnet build`**, **`dotnet test`**, **`Samples.WPF`** / **`Samples.Avalonia`**, and the Nuke **Ci** target.
 
-**Related repositories** (separate clones):
+**Related repositories** (separate clones; no package dependency):
 
 | Repo | Role |
 |------|------|
-| [MvvmAIO](https://github.com/MvvmAIO/MvvmAIO) | Core MVVM stack |
 | [Prism.SourceGenerators](https://github.com/MvvmAIO/Prism.SourceGenerators) | Prism Roslyn generators (same Nuke / SLNX / CI patterns) |
 | [MvvmAIO.R3.SourceGenerators](https://github.com/MvvmAIO/MvvmAIO.R3.SourceGenerators) | R3 event/command generators |
 
@@ -181,7 +180,6 @@ Publish actors (workflow `if:`): **`MvvmAIO`**, **`Skymly`**, **`wys0610`**.
 | **This file** | Agent/contributor constraints, layout, CI, conventions |
 | **[Samples.WPF/Views/MainWindow.xaml](Samples.WPF/Views/MainWindow.xaml)** | WPF living examples (`{x:…}`) |
 | **[Samples.Avalonia/Views/MainWindow.axaml](Samples.Avalonia/Views/MainWindow.axaml)** | Avalonia living examples (`{x:…}` + `<x:…>` elements) |
-| **[docs/ecosystem-link.md](docs/ecosystem-link.md)** | Snippet for MvvmAIO main repo README |
 
 ---
 

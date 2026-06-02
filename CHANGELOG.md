@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+### Added
+
+- **Tests:** `SharedExtensionsTests` for Avalonia (parity with WPF); additional shared literal coverage (`Guid`, `DateTime`, `TimeSpan`, `Decimal`) on both platforms.
+
+### Removed
+
+- **`docs/ecosystem-link.md`** and other cross-repository documentation pointers (this repo is standalone; no README links to sibling packages).
+
 ## [0.3.1] - 2026-05-28
 
 ### Changed
@@ -18,7 +26,7 @@ All notable changes to this project are documented in this file.
 - **`ColorExtension`** (WPF + Avalonia), **`DurationExtension`** and **`KeyTimeExtension`** (WPF animation types).
 - **Source Link** and **`.snupkg`** symbol packages for published libraries.
 - **`Directory.Packages.props`** — central package version management.
-- **`docs/ecosystem-link.md`** — suggested README snippet for the [MvvmAIO](https://github.com/MvvmAIO/MvvmAIO) main repository.
+- **`docs/ecosystem-link.md`** — optional README snippet template (since removed).
 
 ### Changed
 

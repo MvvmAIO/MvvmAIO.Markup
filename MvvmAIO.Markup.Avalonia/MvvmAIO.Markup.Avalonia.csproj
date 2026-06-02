@@ -9,7 +9,7 @@
 		<LangVersion>14.0</LangVersion>
 		<IsPackable>true</IsPackable>
 		<PackageId>MvvmAIO.Markup.Avalonia</PackageId>
-		<Description>Markup helpers and utilities for Avalonia in the MvvmAIO stack.</Description>
+		<Description>XAML markup extensions for strongly typed literals in Avalonia.</Description>
 		<PackageTags>avalonia;mvvm;markup;MvvmAIO;XAML</PackageTags>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>
