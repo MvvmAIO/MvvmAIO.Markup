@@ -1,5 +1,7 @@
 # MvvmAIO.Markup
 
+**English** | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md)
+
 XAML **markup extensions** for common CLR types (booleans, integers, `Guid`, `DateTime`, `TimeSpan`, `decimal`, `double`, `enum`, and more). The shared implementation ships in two NuGet packages: **WPF** and **Avalonia**.
 
 ## Packages
@@ -111,7 +113,7 @@ See **`Samples.WPF`** and **`Samples.Avalonia`** for full button matrices (WPF: 
 
 ## Contributing
 
-Automated agents and contributors: see **[AGENTS.md](AGENTS.md)** ([中文摘要](AGENTS.zh-CN.md)), **[CONTRIBUTING.md](CONTRIBUTING.md)**, and **[CHANGELOG.md](CHANGELOG.md)**.
+Automated agents and contributors: see **[AGENTS.md](AGENTS.md)**, **[CONTRIBUTING.md](CONTRIBUTING.md)**, and **[CHANGELOG.md](CHANGELOG.md)**.
 
 ## Repository
 
