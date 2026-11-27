@@ -2,6 +2,11 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | **日本語**
 
+[![CI](https://github.com/MvvmAIO/MvvmAIO.Markup/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/MvvmAIO/MvvmAIO.Markup/actions/workflows/dotnet.yml)
+[![NuGet WPF](https://img.shields.io/nuget/v/MvvmAIO.Markup.WPF?label=NuGet%20WPF&logo=nuget)](https://www.nuget.org/packages/MvvmAIO.Markup.WPF)
+[![NuGet Avalonia](https://img.shields.io/nuget/v/MvvmAIO.Markup.Avalonia?label=NuGet%20Avalonia&logo=nuget)](https://www.nuget.org/packages/MvvmAIO.Markup.Avalonia)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
+
 よく使われる CLR 型（真偽値、整数、`Guid`、`DateTime`、`TimeSpan`、`decimal`、`double`、`enum` など）向けの XAML **マークアップ拡張**です。共有実装は **WPF** と **Avalonia** の 2 つの NuGet パッケージとして提供されます。
 
 ## パッケージ

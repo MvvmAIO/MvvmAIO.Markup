@@ -2,6 +2,11 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | **繁體中文** | [日本語](README.ja.md)
 
+[![CI](https://github.com/MvvmAIO/MvvmAIO.Markup/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/MvvmAIO/MvvmAIO.Markup/actions/workflows/dotnet.yml)
+[![NuGet WPF](https://img.shields.io/nuget/v/MvvmAIO.Markup.WPF?label=NuGet%20WPF&logo=nuget)](https://www.nuget.org/packages/MvvmAIO.Markup.WPF)
+[![NuGet Avalonia](https://img.shields.io/nuget/v/MvvmAIO.Markup.Avalonia?label=NuGet%20Avalonia&logo=nuget)](https://www.nuget.org/packages/MvvmAIO.Markup.Avalonia)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
+
 針對常用 CLR 型別（布林值、整數、`Guid`、`DateTime`、`TimeSpan`、`decimal`、`double`、`enum` 等）的 XAML **標記延伸（Markup Extensions）**。共用實作透過兩個 NuGet 套件發布：**WPF** 與 **Avalonia**。
 
 ## NuGet 套件
