@@ -2,6 +2,11 @@
 
 [English](README.md) | **简体中文** | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md)
 
+[![CI](https://github.com/MvvmAIO/MvvmAIO.Markup/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/MvvmAIO/MvvmAIO.Markup/actions/workflows/dotnet.yml)
+[![NuGet WPF](https://img.shields.io/nuget/v/MvvmAIO.Markup.WPF?label=NuGet%20WPF&logo=nuget)](https://www.nuget.org/packages/MvvmAIO.Markup.WPF)
+[![NuGet Avalonia](https://img.shields.io/nuget/v/MvvmAIO.Markup.Avalonia?label=NuGet%20Avalonia&logo=nuget)](https://www.nuget.org/packages/MvvmAIO.Markup.Avalonia)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
+
 面向常用 CLR 类型（布尔值、整数、`Guid`、`DateTime`、`TimeSpan`、`decimal`、`double`、`enum` 等）的 XAML **标记扩展**。共享实现通过两个 NuGet 包分发：**WPF** 与 **Avalonia**。
 
 ## NuGet 包
